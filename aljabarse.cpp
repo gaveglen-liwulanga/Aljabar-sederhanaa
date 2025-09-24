@@ -1,0 +1,47 @@
+// aljabar sederhana
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+int main() {
+    srand(time(0)); // untuk random soal
+
+    int a, b, x, jawaban, tebakan;
+    int skor = 0;
+    char lanjut;
+
+    cout << "=== GAME TEBAK SOAL ALJABAR ===\n";
+
+    do {
+        // Membuat soal aljabar acak: a*x + b
+        a = rand() % 10 + 1; // koefisien a (1-10)
+        b = rand() % 10;     // konstanta b (0-9)
+        x = rand() % 10 + 1; // nilai x (1-10)
+
+        jawaban = a * x + b;
+
+        cout << "\nHitung hasil dari: " << a << "x + " << b << " jika x = " << x << endl;
+        cout << "Jawabanmu: ";
+        cin >> tebakan;
+
+        // Menggunakan operator logika untuk menentukan benar/salah
+        if ((tebakan == jawaban) && !(tebakan != jawaban)) {
+            cout << "Benar! 🎉\n";
+            skor++;
+        } 
+        else if ((tebakan != jawaban) || (tebakan < 0)) {
+            cout << "Salah! ❌ Jawaban yang benar adalah: " << jawaban << endl;
+        }
+
+        cout << "Skor sementara: " << skor << endl;
+        cout << "Mau lanjut main? (y/n): ";
+        cin >> lanjut;
+
+    } while (lanjut == 'y' || lanjut == 'Y');
+
+    cout << "\n=== Permainan selesai ===" << endl;
+    cout << "Total skor kamu: " << skor << endl;
+
+    return 0;
+}
